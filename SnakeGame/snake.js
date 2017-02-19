@@ -17,7 +17,8 @@ function Snake() {
     }
 
     this.eat = function(position,highscore) {
-        var d = dist(this.x, this.y, position.x, position.y);
+        
+		var d = dist(this.x, this.y, position.x, position.y);
         if (d < 1) {
             this.totalLength ++;
             if (this.totalLength > highscore) {
