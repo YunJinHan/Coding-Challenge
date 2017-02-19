@@ -4,10 +4,12 @@ var apple;
 
 function setup() {
     var cnv = createCanvas(600,600);
-    cnv.position(100,100);
+    cnv.parent("main");
     s = new Snake();
     frameRate(10);
     pickLocation();
+    var state = document.getElementById("state");
+    state.innerText = "Game Start";
 }
 
 function pickLocation() {
@@ -19,15 +21,12 @@ function pickLocation() {
 
 function draw() {
     background(51);
-
     if (s.eat(apple)) {
         pickLocation();
     }
-
     s.gameOver();
     s.update();
     s.show();
-
     fill(255,0,100);
     rect(apple.x, apple.y, scl, scl);
 }

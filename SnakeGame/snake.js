@@ -1,15 +1,29 @@
 function Snake() {
     this.x = 0;
     this.y = 0;
-    this.xspeed = 1;
+    this.xspeed = 0;
     this.yspeed = 0;
     this.totalLength = 0;
     this.tail = [];
+
+    this.init = function() {
+        this.x = 0;
+        this.y = 0;
+        this.xspeed = 0;
+        this.yspeed = 0;
+        this.totalLength = 0;
+        this.tail = [];
+        pickLocation();
+        var state = document.getElementById("state");
+        state.innerText = "Game Over .. Restart ?";
+    }
 
     this.eat = function(position) {
         var d = dist(this.x, this.y, position.x, position.y);
         if (d < 1) {
             this.totalLength ++;
+            var state = document.getElementById("state");
+            state.innerText = "Record : " + this.totalLength;
             return true;
         } else {
             return false;
@@ -26,8 +40,7 @@ function Snake() {
             var pos = this.tail[i];
             var d = dist(this.x, this.y, pos.x, pos.y);
             if (d < 1) {
-                this.totalLength = 0;
-                this.tail = [];
+                this.init();
             }
         }
     }
