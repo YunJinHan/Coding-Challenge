@@ -1,14 +1,17 @@
 var s;
 var scl = 20;
 var apple;
+var state = document.getElementById("state");
+var highscore = 0;
+var restart;
 
 function setup() {
     var cnv = createCanvas(600,600);
     cnv.parent("main");
     s = new Snake();
-    frameRate(10);
+    restart == false;
+    frameRate(20);
     pickLocation();
-    var state = document.getElementById("state");
     state.innerText = "Game Start";
 }
 
@@ -21,10 +24,16 @@ function pickLocation() {
 
 function draw() {
     background(51);
-    if (s.eat(apple)) {
+    var score = s.eat(apple,highscore);
+    if (score > -1) {
         pickLocation();
+        highscore = score;
     }
-    s.gameOver();
+    restart = s.gameOver();
+    if (restart) {
+        state.innerText = "Game Start";
+        restart == false;
+    }
     s.update();
     s.show();
     fill(255,0,100);

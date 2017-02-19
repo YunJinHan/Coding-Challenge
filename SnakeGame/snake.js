@@ -14,19 +14,19 @@ function Snake() {
         this.totalLength = 0;
         this.tail = [];
         pickLocation();
-        var state = document.getElementById("state");
-        state.innerText = "Game Over .. Restart ?";
     }
 
-    this.eat = function(position) {
+    this.eat = function(position,highscore) {
         var d = dist(this.x, this.y, position.x, position.y);
         if (d < 1) {
             this.totalLength ++;
-            var state = document.getElementById("state");
-            state.innerText = "Record : " + this.totalLength;
-            return true;
+            if (this.totalLength > highscore) {
+                highscore = this.totalLength;
+            }
+            state.innerText = "Record : " + this.totalLength + " / High Score : " + highscore;
+            return highscore;
         } else {
-            return false;
+            return -1;
         }
     }
 
@@ -41,8 +41,10 @@ function Snake() {
             var d = dist(this.x, this.y, pos.x, pos.y);
             if (d < 1) {
                 this.init();
+                return true;
             }
         }
+        return false;
     }
 
     this.update = function () {
