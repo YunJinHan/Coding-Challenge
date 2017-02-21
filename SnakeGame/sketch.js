@@ -6,7 +6,7 @@ var highscore = 0;
 var restart;
 
 function setup() {
-    var cnv = createCanvas(600,600);
+    var cnv = createCanvas(500,500);
     cnv.parent("main");
     s = new Snake();
     restart == false;
