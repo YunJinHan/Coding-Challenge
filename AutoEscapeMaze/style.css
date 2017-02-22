@@ -1,0 +1,27 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumpenscript.css');
+
+html, body {
+    width: 70%;
+    height: 70%;
+    font-family: 'Nanum Pen Script', serif;
+    font-size: 30pt;
+}
+
+#main {
+    margin: auto;
+    margin-top: 5%;
+    margin-left: 5%;
+    padding: 0;
+}
+
+#state {
+    text-align: center;
+    margin: auto;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    width: 600px;
+    height: 12%;
+    background-color: red;
+    color: white;
+    box-shadow: 5px 5px 5px #000000;
+}
