@@ -1,9 +1,10 @@
 var cols,rows;
-var w = 30;
+var w = 40;
 var grids = [];
 var currentCell;
 var stack = [];
 var state = document.getElementById("state");
+var startCell,endCell;
 
 function setup() {
     var cnv = createCanvas(600,600);
@@ -16,7 +17,6 @@ function setup() {
             grids.push(cell);
         }
     }
-
     currentCell = grids[0];
     state.innerText = "Maze Generate Start";
 }
@@ -26,7 +26,6 @@ function draw() {
     for (var i = 0; i < grids.length; i ++) {
         grids[i].show();
     }
-
     currentCell.visited = true;
     currentCell.highlight();
 
@@ -42,6 +41,9 @@ function draw() {
     }
     if (stack.length === 0) {
         state.innerText = "Maze Generated!!";
+        noStroke();
+        fill(50,0,50);
+        rect(endCell.i*w,endCell.j*w,w,w);
     }
 }
 

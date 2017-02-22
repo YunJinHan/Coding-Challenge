@@ -12,6 +12,13 @@ function Cell(i,j) {
         var bottom = grids[index(i,j + 1)];
         var left = grids[index(i - 1,j)];
 
+        if (index(i + 1,j) == -1 && index(i,j + 1) == -1) {
+            endCell = this;
+        }
+
+        if (index(i, j - 1) == -1 && index(i - 1,j) == -1) {
+            startCell = this;
+        }
         if (top && !top.visited) {
             neighbors.push(top);
         }
@@ -24,7 +31,6 @@ function Cell(i,j) {
         if (left && !left.visited) {
             neighbors.push(left);
         }
-
         if (neighbors.length > 0) {
             var nextDirection = floor(random(0,neighbors.length));
             return neighbors[nextDirection];
