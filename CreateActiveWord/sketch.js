@@ -1,6 +1,6 @@
 var font;
 var first = true;
-var words;
+var words = [];
 var create = document.getElementById("button");
 
 function preload() {
